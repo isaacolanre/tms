@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+       
+        <title>TMS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta content="GBIKNA TMS" name="description" />
+        <meta content="" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="/ui/assets/images/logo.png">
+
+        <!-- DataTables -->
+        <link href="/ui/plugins/datatables/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/plugins/datatables/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <!-- Responsive datatable examples -->
+        <link href="/ui/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" /> 
+
+        <!-- App css -->
+        <link href="/ui/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+
+        <!-- Form Library -->
+        <link href="/ui/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/plugins/huebee/huebee.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/plugins/timepicker/bootstrap-material-datetimepicker.css" rel="stylesheet">
+        <link href="/ui/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+        <link href="/ui/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <!-- Left Sidenav -->
+        <div class="left-sidenav">
+          <!-- LOGO -->
+          <div class="brand">
+              <a href="/tms/dashboard/show" class="logo">
+                  <span>
+                      <img src="/ui/assets/images/logo.png" alt="logo-small" class="logo-sm">
+                  </span>
+              </a>
+          </div>
+          <!--end logo-->
+          <div class="menu-content h-100" data-simplebar>
+              <ul class="metismenu left-sidenav-menu">
+                  <li class="menu-label mt-0">Main</li>
+                    <% if(role == 'banker') { %>
+                        <li>
+                            <a href="#"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Processing</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li class="nav-item"><a class="nav-link" href="/tms/bankejournal/show"><i class="ti-control-record"></i>Card</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/bankstate/show"><i class="ti-control-record"></i>State</a></li> 
+                            </ul>
+                        </li>
+                    <% } %>
+
+                    <% if(role == 'user') { %>
+                        <li>
+                            <a href="#"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Processing</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li class="nav-item"><a class="nav-link" href="/tms/dashboard/show"><i class="ti-control-record"></i>Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/transaction/show"><i class="ti-control-record"></i>Transactions</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/ejournal/show"><i class="ti-control-record"></i>Card</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/state/show"><i class="ti-control-record"></i>State</a></li> 
+                            </ul>
+                        </li>
+                    <% } %>
+                  <% if(usertype == 'maker') { %>
+                      <li>
+                          <a href="#"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Setup</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                          <ul class="nav-second-level" aria-expanded="false">
+                              <li class="nav-item"><a class="nav-link" href="/tms/signup/show"><i class="ti-control-record"></i>Signup</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/profile/show"><i class="ti-control-record"></i>Profile</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/wallet/show"><i class="ti-control-record"></i>Wallet</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/terminals/show"><i class="ti-control-record"></i>Terminals</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/purchase/show"><i class="ti-control-record"></i>Terminal Purchase</a></li> 
+                              <li class="nav-item"><a class="nav-link" href="/tms/stock/show"><i class="ti-control-record"></i>Stock</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/credits/show"><i class="ti-control-record"></i>Credit Manager</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/transactiontypes/show"><i class="ti-control-record"></i>Transaction Types</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/prices/show"><i class="ti-control-record"></i>Terminal Prices</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/staffmapping/show"><i class="ti-control-record"></i>Staff Mappings</a></li>  
+                              <li class="nav-item"><a class="nav-link" href="/tms/messages/show"><i class="ti-control-record"></i>Messages</a></li> 
+                              <li class="nav-item"><a class="nav-link" href="/tms/logo/show"><i class="ti-control-record"></i>Logo</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/banks/show"><i class="ti-control-record"></i>Bank</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/currency/show"><i class="ti-control-record"></i>Currency</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/hostkeys/show"><i class="ti-control-record"></i>Host Keys</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/upgrade/all"><i class="ti-control-record"></i>Remote Update</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/settings/callhome"><i class="ti-control-record"></i>Call Home</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/settings/communications"><i class="ti-control-record"></i>Communications</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/settings/receipt"><i class="ti-control-record"></i>Receipt</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/settings/host"><i class="ti-control-record"></i>Host</a></li>     
+                          </ul>
+                      </li>
+                  <% } %>
+
+                  <li>
+                      <a href="#"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Management</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                      <ul class="nav-second-level" aria-expanded="false">
+                          <li class="nav-item"><a class="nav-link" href="/tms/usermodify/changepassword"><i class="ti-control-record"></i>Change Password</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/"><i class="ti-control-record"></i>Logout</a></li>   
+                      </ul>
+                  </li>
+                  
+                  <% if(role == 'admin') { %>   
+                      <li>
+                          <a href="#"> <i data-feather="hom`e" class="align-self-center menu-icon"></i><span>Admin</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                          <ul class="nav-second-level" aria-expanded="false">
+                              <li class="nav-item"><a class="nav-link" href="/tms/tmsusers/all"><i class="ti-control-record"></i>All Users</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/tmsadmins/all"><i class="ti-control-record"></i>All Admins</a></li> 
+                              <li class="nav-item"><a class="nav-link" href="/tms/tmsblocked/show"><i class="ti-control-record"></i>Blocked Users</a></li> 
+                              <li class="nav-item"><a class="nav-link" href="/tms/usersignup/user"><i class="ti-control-record"></i>New User</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/usersignup/admin"><i class="ti-control-record"></i>New Admin</a></li>  
+                          </ul>
+                      </li>  
+                  <% } %>
+
+                  <% if(usertype == 'checker') { %>
+                      <li>
+                          <a href="#"> <i data-feather="hom`e" class="align-self-center menu-icon"></i><span>Checkers</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                          <ul class="nav-second-level" aria-expanded="false">
+                              <li class="nav-item"><a class="nav-link" href="/tms/pending/terminals"><i class="ti-control-record"></i>Approve Terminals</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/pending/profile"><i class="ti-control-record"></i>Approve Profiles</a></li>
+                              <li class="nav-item"><a class="nav-link" href="/tms/pending/switchkeys"><i class="ti-control-record"></i>Approve Keys</a></li> 
+                              <li class="nav-item"><a class="nav-link" href="/tms/pending/credits"><i class="ti-control-record"></i>Approve Credits</a></li>   
+                          </ul>
+                      </li> 
+                  <% } %>
+              </ul>
+          </div>
+      </div>
+        <!-- end left-sidenav-->
+        
+
+        <div class="page-wrapper">
+            <!-- Top Bar Start -->
+            <div class="topbar">            
+              <!-- Navbar -->
+              <nav class="navbar-custom">    
+                  <ul class="list-unstyled topbar-nav float-end mb-0">                       
+
+                      <li class="dropdown">
+                          <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-bs-toggle="dropdown" href="#" role="button"
+                              aria-haspopup="false" aria-expanded="false">
+                              <span class="ms-1 nav-user-name hidden-sm" id="fullname"></span>
+                              <img src="/ui/assets/images/logo.png" alt="profile-user" class="rounded-circle thumb-xs" />                                 
+                          </a>
+                      </li>
+                  </ul><!--end topbar-nav-->
+      
+                  <ul class="list-unstyled topbar-nav mb-0">                        
+                      <li>
+                          <button class="nav-link button-menu-mobile">
+                              <i data-feather="menu" class="align-self-center topbar-icon"></i>
+                          </button>
+                      </li>                         
+                  </ul>
+              </nav>
+              <!-- end navbar-->
+          </div>
+            <!-- Top Bar End -->
+
+            <!-- Page Content-->
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4 class="page-title">TMS</h4>
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">Communication</a></li>
+                                            <li class="breadcrumb-item active">Show</li>
+                                        </ol>
+                                    </div><!--end col-->
+                                    <div class="col-auto align-self-center">
+                                        <span id="table_pull">
+                                            <a href="#" class="btn btn-sm btn-outline-primary">
+                                                <i data-feather="plus-square" class="align-self-center icon-xs"></i>
+                                            </a>
+                                        </span>
+                                    </div><!--end col-->  
+                                </div><!--end row-->                                                              
+                            </div><!--end page-title-box-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    <!-- end page title end breadcrumb -->
+    
+                    <div id="tableView" class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Communication</h4>
+                                    <p class="text-muted mb-0">View All Communication
+                                    </p>
+                                </div><!--end card-header style="width: 800px; margin: 0 auto;"-->
+                                <div class="card-body">
+                                    <div style="width: 1000px; margin: 0 auto;"> 
+                                        <table id="datatable-buttons" class="table table-striped table-bordered nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <!--<table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">-->
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Apn</th>
+                                            <th>Port</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    </div>    
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+                    
+
+
+                    <div id="formView" class="row" style="display:none">
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Details</h4>
+                                        <p class="text-muted mb-0">Communication Setup</p> 
+                                    </div><!--end card-header-->
+                                    <div class="card-body">
+                                        <div class="form-material">
+
+                                            <label class="mb-3">Name</label> 
+                                            <input id="name" class="form-control" value="" />
+                                            
+
+                                            <label class="mb-3">Comms Type</label> 
+                                            <select id="commstype" class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;">
+                                                <option value="WIFI">WIFI</option>
+                                                <option value="GPRS">GPRS</option>
+                                                <option value="LAN">LAN</option>
+                                                <option value="CDMA">CDMA</option>
+                                            </select>
+
+                                            <label class="mb-3">Username</label> 
+                                            <input id="username" class="form-control" value="" />
+
+                                            <label class="mb-3">GateWay</label> 
+                                            <input id="gateway" class="form-control" value="" />
+
+                                            <label class="mb-3">Ip</label> 
+                                            <input id="ip" class="form-control" value="" />
+
+                                            <label class="mb-3">Port</label> 
+                                            <input id="port" class="form-control" value="" />
+
+                                            <label class="mb-3">Ip Mode</label> 
+                                            <select id="ipmode" class="select2 form-control mb-3 custom-select" style="width: 100%; height:36px;">
+                                                <option value="Dynamic">DYNAMIC</option>
+                                                <option value="Static">STATIC</option>
+                                            </select>
+
+                                            <label class="mb-3">Apn</label> 
+                                            <input id="apn" class="form-control" value="" />
+
+                                            <label class="mb-3">Password</label> 
+                                            <input id="password" class="form-control" value="" />
+
+                                            <label class="mb-3">Remark</label> 
+                                            <input id="remark" class="form-control" value="" />
+                                            
+
+                                            <br><br><br><br>
+                                            <button id="btnAppr" type="button" class="btn btn-primary">Save</button>
+                                            <button id="btnDcl" type="button" class="btn btn-danger">Delete</button>
+                                            <button id="goBack" type="button" class="btn btn-warning">Back</button>
+                                        </div>       
+                                    </div>
+
+
+                                </div><!--end card-->                                
+                            </div> <!-- end col -->
+                            
+                        </div><!--end row--> 
+                    </div>
+                </div><!-- container -->
+
+                <footer class="footer text-center text-sm-start">
+                  &copy; <script>
+                      document.write(new Date().getFullYear())
+                  </script> TMS <span class="text-muted d-none d-sm-inline-block float-end"> <i
+                          class="mdi mdi-heart text-danger"></i> by Gbikna</span>
+              </footer><!--end footer-->
+            </div>
+            <!-- end page content -->
+        </div>
+        <!-- end page-wrapper -->
+
+        
+
+
+        <!-- jQuery  -->
+        <script src="/ui/assets/js/jquery.min.js"></script>
+        <script src="/ui/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/ui/assets/js/metismenu.min.js"></script>
+        <script src="/ui/assets/js/waves.js"></script>
+        <script src="/ui/assets/js/feather.min.js"></script>
+        <script src="/ui/assets/js/simplebar.min.js"></script>
+        <script src="/ui/assets/js/moment.js"></script>
+        <script src="/ui/plugins/daterangepicker/daterangepicker.js"></script>
+
+        <!-- Required datatable js -->
+        <script src="/ui/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="/ui/plugins/datatables/dataTables.bootstrap5.min.js"></script>
+        <!-- Buttons examples -->
+        <script src="/ui/plugins/datatables/dataTables.buttons.min.js"></script>
+        <script src="/ui/plugins/datatables/buttons.bootstrap5.min.js"></script>
+        <script src="/ui/plugins/datatables/jszip.min.js"></script>
+        <script src="/ui/plugins/datatables/pdfmake.min.js"></script>
+        <script src="/ui/plugins/datatables/vfs_fonts.js"></script>
+        <script src="/ui/plugins/datatables/buttons.html5.min.js"></script>
+        <script src="/ui/plugins/datatables/buttons.print.min.js"></script>
+        <script src="/ui/plugins/datatables/buttons.colVis.min.js"></script>
+        <!-- Responsive examples -->
+        <script src="/ui/plugins/datatables/dataTables.responsive.min.js"></script>
+        <script src="/ui/plugins/datatables/responsive.bootstrap4.min.js"></script>
+        <script src="/ui/assets/pages/jquery.datatable.init.js"></script>
+
+        <!-- App js -->
+        <script src="/ui/assets/js/app.js"></script>
+
+        <!-- Form Library  -->
+        <script src="/ui/assets/js/metismenu.min.js"></script>
+        <script src="/ui/assets/js/waves.js"></script>
+        <script src="/ui/assets/js/feather.min.js"></script>
+        <script src="/ui/assets/js/simplebar.min.js"></script>
+        <script src="/ui/assets/js/moment.js"></script>
+        <script src="/ui/plugins/daterangepicker/daterangepicker.js"></script>
+        <script src="/ui/plugins/select2/select2.min.js"></script>
+        <script src="/ui/plugins/huebee/huebee.pkgd.min.js"></script>
+        <script src="/ui/plugins/timepicker/bootstrap-material-datetimepicker.js"></script>
+        <script src="/ui/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+        <script src="/ui/plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js"></script>
+        <script src="/ui/assets/pages/jquery.forms-advanced.js"></script>
+
+        <script src="/ui/ajax/transactions/sweetalert2.all.min.js"></script>
+        <script src="/ui/ajax/settings/communication.js"></script>
+
+    </body>
+
+</html>

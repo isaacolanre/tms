@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>TMS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta content="GBIKNA TMS" name="description" />
+        <meta content="" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="/ui/assets/images/logo.png">
+
+        <!-- jvectormap -->
+        <link href="/ui/plugins/jvectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet">
+
+        <!-- App css -->
+        <link href="/ui/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+        <link href="/ui/assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body class="">
+        <!-- Left Sidenav -->
+        <div class="left-sidenav">
+            <!-- LOGO -->
+            <div class="brand">
+                <a href="/tms/dashboard/show" class="logo">
+                    <span>
+                        <img src="/ui/assets/images/logo.png" alt="logo-small" class="logo-sm">
+                    </span>
+                </a>
+            </div>
+            <!--end logo-->
+            <div class="menu-content h-100" data-simplebar>
+                <ul class="metismenu left-sidenav-menu">
+                    <li class="menu-label mt-0">Main</li>
+                    <% if(role == 'banker') { %>
+                        <li>
+                            <a href="#"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Processing</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li class="nav-item"><a class="nav-link" href="/tms/bankejournal/show"><i class="ti-control-record"></i>Card</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/bankstate/show"><i class="ti-control-record"></i>State</a></li> 
+                            </ul>
+                        </li>
+                    <% } %>
+
+                    <% if(role == 'user') { %>
+                        <li>
+                            <a href="#"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Processing</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li class="nav-item"><a class="nav-link" href="/tms/dashboard/show"><i class="ti-control-record"></i>Dashboard</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/transaction/show"><i class="ti-control-record"></i>Transactions</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/ejournal/show"><i class="ti-control-record"></i>Card</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/state/show"><i class="ti-control-record"></i>State</a></li> 
+                            </ul>
+                        </li>
+                    <% } %>  
+                    <% if(usertype == 'maker') { %>
+                        <li>
+                            <a href="#"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Setup</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li class="nav-item"><a class="nav-link" href="/tms/signup/show"><i class="ti-control-record"></i>Signup</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/profile/show"><i class="ti-control-record"></i>Profile</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/wallet/show"><i class="ti-control-record"></i>Wallet</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/terminals/show"><i class="ti-control-record"></i>Terminals</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/purchase/show"><i class="ti-control-record"></i>Terminal Purchase</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="/tms/stock/show"><i class="ti-control-record"></i>Stock</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/credits/show"><i class="ti-control-record"></i>Credit Manager</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/transactiontypes/show"><i class="ti-control-record"></i>Transaction Types</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/prices/show"><i class="ti-control-record"></i>Terminal Prices</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/staffmapping/show"><i class="ti-control-record"></i>Staff Mappings</a></li>  
+                                <li class="nav-item"><a class="nav-link" href="/tms/messages/show"><i class="ti-control-record"></i>Messages</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="/tms/logo/show"><i class="ti-control-record"></i>Logo</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/banks/show"><i class="ti-control-record"></i>Bank</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/currency/show"><i class="ti-control-record"></i>Currency</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/hostkeys/show"><i class="ti-control-record"></i>Host Keys</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/upgrade/all"><i class="ti-control-record"></i>Remote Update</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/settings/callhome"><i class="ti-control-record"></i>Call Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/settings/communications"><i class="ti-control-record"></i>Communications</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/settings/receipt"><i class="ti-control-record"></i>Receipt</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/settings/host"><i class="ti-control-record"></i>Host</a></li>     
+                            </ul>
+                        </li>
+                    <% } %>
+
+                    <li>
+                        <a href="#"> <i data-feather="home" class="align-self-center menu-icon"></i><span>Management</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li class="nav-item"><a class="nav-link" href="/tms/usermodify/changepassword"><i class="ti-control-record"></i>Change Password</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/"><i class="ti-control-record"></i>Logout</a></li>   
+                        </ul>
+                    </li>
+                    
+                    <% if(role == 'admin') { %>   
+                        <li>
+                            <a href="#"> <i data-feather="hom`e" class="align-self-center menu-icon"></i><span>Admin</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li class="nav-item"><a class="nav-link" href="/tms/tmsusers/all"><i class="ti-control-record"></i>All Users</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/tmsadmins/all"><i class="ti-control-record"></i>All Admins</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="/tms/tmsblocked/show"><i class="ti-control-record"></i>Blocked Users</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="/tms/usersignup/user"><i class="ti-control-record"></i>New User</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/usersignup/admin"><i class="ti-control-record"></i>New Admin</a></li>  
+                            </ul>
+                        </li>  
+                    <% } %>
+
+                    <% if(usertype == 'checker') { %>
+                        <li>
+                            <a href="#"> <i data-feather="hom`e" class="align-self-center menu-icon"></i><span>Checkers</span><span class="menu-arrow"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li class="nav-item"><a class="nav-link" href="/tms/pending/terminals"><i class="ti-control-record"></i>Approve Terminals</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/pending/profile"><i class="ti-control-record"></i>Approve Profiles</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/tms/pending/switchkeys"><i class="ti-control-record"></i>Approve Keys</a></li> 
+                                <li class="nav-item"><a class="nav-link" href="/tms/pending/credits"><i class="ti-control-record"></i>Approve Credits</a></li>   
+                            </ul>
+                        </li> 
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        <!-- end left-sidenav-->
+        
+
+        <div class="page-wrapper">
+            <!-- Top Bar Start -->
+            <div class="topbar">            
+                <!-- Navbar -->
+                <nav class="navbar-custom">    
+                    <ul class="list-unstyled topbar-nav float-end mb-0">                       
+
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-bs-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="false" aria-expanded="false">
+                                <span class="ms-1 nav-user-name hidden-sm" id="fullname"></span>
+                                <img src="/ui/assets/images/logo.png" alt="profile-user" class="rounded-circle thumb-xs" />                                 
+                            </a>
+                        </li>
+                    </ul><!--end topbar-nav-->
+        
+                    <ul class="list-unstyled topbar-nav mb-0">                        
+                        <li>
+                            <button class="nav-link button-menu-mobile">
+                                <i data-feather="menu" class="align-self-center topbar-icon"></i>
+                            </button>
+                        </li>                         
+                    </ul>
+                </nav>
+                <!-- end navbar-->
+            </div>
+            <!-- Top Bar End -->
+
+            <!-- Page Content-->
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <div class="row">
+                                    <div class="col">
+                                        <h4 class="page-title">Analytics</h4>
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="#">TMS</a></li>
+                                            <li class="breadcrumb-item active">Dashboard</li>
+                                        </ol>
+                                    </div><!--end col-->
+                                    <div class="col-auto align-self-center">
+                                        <a href="#" class="btn btn-sm btn-outline-primary" id="Dash_Date">
+                                            <span class="ay-name" id="Day_Name">Today:</span>&nbsp;
+                                            <span class="" id="Select_date">Jan 11</span>
+                                            <i data-feather="calendar" class="align-self-center icon-xs ms-1"></i>
+                                        </a>
+                                        <span id="table_refresh">
+                                            <a href="#" class="btn btn-sm btn-outline-primary">
+                                                <i data-feather="refresh-cw" class="align-self-center icon-xs"></i>
+                                            </a>
+                                        </span>
+                                    </div><!--end col-->  
+                                </div><!--end row-->                                                              
+                            </div><!--end page-title-box-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    <!-- end page title end breadcrumb -->
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <div class="row justify-content-center">
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card report-card">
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col">
+                                                    <p class="text-dark mb-0 fw-semibold">Signups</p>
+                                                    <h3 id="allUsers" class="m-0"></h3>
+                                                    <p class="mb-0 text-truncate text-muted"><span class="text-success"><i class="mdi mdi-trending-up"></i>All Registered Users</span></p>
+                                                </div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="report-main-icon bg-light-alt">
+                                                        <i data-feather="users" class="align-self-center text-muted icon-sm"></i>  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--end card-body--> 
+                                    </div><!--end card--> 
+                                </div> <!--end col--> 
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card report-card">
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-center">                                                
+                                                <div class="col">
+                                                    <p class="text-dark mb-0 fw-semibold">Transacting Users</p>
+                                                    <h3 id="txnAgents" class="m-0"></h3>
+                                                    <p class="mb-0 text-truncate text-muted"><span class="text-success"><i class="mdi mdi-trending-up"></i><span id="txnAgentsPer"> Percent Transacting </span> </p>
+                                                </div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="report-main-icon bg-light-alt">
+                                                        <i data-feather="clock" class="align-self-center text-muted icon-sm"></i>  
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div><!--end card-body--> 
+                                    </div><!--end card--> 
+                                </div> <!--end col--> 
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card report-card">
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-center">                                                
+                                                <div class="col">
+                                                    <p class="text-dark mb-0 fw-semibold">General Failure Rate</p>
+                                                    <h3 id="genFilRate" class="m-0"></h3>
+                                                    <p class="mb-0 text-truncate text-muted"><span class="text-danger"><i class="mdi mdi-trending-down"></i><span id="genApprPer"></span> Transaction Failure Rate</span> </p>
+                                                </div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="report-main-icon bg-light-alt">
+                                                        <i data-feather="activity" class="align-self-center text-muted icon-sm"></i>  
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div><!--end card-body--> 
+                                    </div><!--end card--> 
+                                </div> <!--end col--> 
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card report-card">
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col">  
+                                                    <p class="text-dark mb-0 fw-semibold">Card Approval Rate</p>                                         
+                                                    <h3 id="cardAppRate" class="m-0"></h3>
+                                                    <p class="mb-0 text-truncate text-muted"><span class="text-success"><i class="mdi mdi-trending-up"></i><span id="cardApprPer"></span> Card Success Rate</span></p>
+                                                </div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="report-main-icon bg-light-alt">
+                                                        <i data-feather="briefcase" class="align-self-center text-muted icon-sm"></i>  
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div><!--end card-body--> 
+                                    </div><!--end card--> 
+                                </div> <!--end col-->                               
+                            </div><!--end row-->
+                            
+                            <div class="row justify-content-center">
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card report-card">
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col">
+                                                    <p class="text-dark mb-0 fw-semibold">Wallet</p>
+                                                    <h3 id="allWallets" class="m-0"></h3>
+                                                    <p class="mb-0 text-truncate text-muted"><span class="text-success"><i class="mdi mdi-trending-up"></i>All Wallet Balances</span></p>
+                                                </div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="report-main-icon bg-light-alt">
+                                                        <i data-feather="users" class="align-self-center text-muted icon-sm"></i>  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!--end card-body--> 
+                                    </div><!--end card--> 
+                                </div> <!--end col--> 
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card report-card">
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-center">                                                
+                                                <div class="col">
+                                                    <p class="text-dark mb-0 fw-semibold">Transfer</p>
+                                                    <h3 id="kudaBal" class="m-0"></h3>
+                                                    <p class="mb-0 text-truncate text-muted"><span class="text-success"><i class="mdi mdi-trending-up"></i>Transfer Balance </span> </p>
+                                                </div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="report-main-icon bg-light-alt">
+                                                        <i data-feather="clock" class="align-self-center text-muted icon-sm"></i>  
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div><!--end card-body--> 
+                                    </div><!--end card--> 
+                                </div> <!--end col--> 
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card report-card">
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-center">                                                
+                                                <div class="col">
+                                                    <p class="text-dark mb-0 fw-semibold">Bills Payment</p>
+                                                    <h3 id="itexBal" class="m-0"></h3>
+                                                    <p class="mb-0 text-truncate text-muted"><span class="text-success"><i class="mdi mdi-trending-up"></i>Wallet Balance </span> </p>
+                                                </div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="report-main-icon bg-light-alt">
+                                                        <i data-feather="clock" class="align-self-center text-muted icon-sm"></i>  
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div><!--end card-body--> 
+                                    </div><!--end card--> 
+                                </div> <!--end col--> 
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="card report-card">
+                                        <div class="card-body">
+                                            <div class="row d-flex justify-content-center">
+                                                <div class="col">  
+                                                    <p class="text-dark mb-0 fw-semibold">Card</p>                                         
+                                                    <h3 id="apprAmt" class="m-0"></h3>
+                                                    <p class="mb-0 text-truncate text-muted"><span class="text-success"><i class="mdi mdi-trending-up"></i>All Card Approved</span></p>
+                                                </div>
+                                                <div class="col-auto align-self-center">
+                                                    <div class="report-main-icon bg-light-alt">
+                                                        <i data-feather="briefcase" class="align-self-center text-muted icon-sm"></i>  
+                                                    </div>
+                                                </div> 
+                                            </div>
+                                        </div><!--end card-body--> 
+                                    </div><!--end card--> 
+                                </div> <!--end col-->                               
+                            </div><!--end row-->
+                            
+                            
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Cashout vs Transfers (In Thousands)</h4>                      
+                                        </div><!--end col-->
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->
+                                <div class="card-body">
+                                    <div class="">
+                                        <div id="ana_dash_1" class="apex-charts"></div>
+                                    </div> 
+                                </div><!--end card-body--> 
+                            </div><!--end card--> 
+                        </div><!--end col-->
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Transaction Breakdown</h4>                      
+                                        </div><!--end col-->
+                                        
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <div id="ana_device" class="apex-charts"></div>
+                                        <h6 class="bg-light-alt py-3 px-2 mb-0">
+                                            <i data-feather="calendar" class="align-self-center icon-xs me-1"></i>
+                                            <span id="tAmt"></span>
+                                        </h6>
+                                    </div>  
+                                    <div class="table-responsive mt-2">
+                                        <table id="myTable" class="table border-dashed mb-0">
+                                            <thead>
+                                            <tr>
+                                                <th>Cash Out</th>
+                                                <th>Transfers</th>
+                                                <th>Bills Payment</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="dtDis">
+                                            
+                                            </tbody>
+                                        </table><!--end /table-->
+                                    </div><!--end /div-->                                 
+                                </div><!--end card-body--> 
+                            </div><!--end card--> 
+                        </div> <!--end col--> 
+                    </div><!--end row-->
+
+
+
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card">   
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Cash Out</h4>                      
+                                        </div><!--end col-->
+                                        <div class="col-auto"> 
+                                            <div class="dropdown">
+                                                <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Recent<i class="las la-angle-down ms-1"></i>
+                                                </a>
+                                            </div>          
+                                        </div><!--end col-->
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->                                              
+                                <div id="cashoutDiv" class="card-body"> 
+                                    <!--end analytics-dash-activity-->
+                                </div>  <!--end card-body-->                                     
+                            </div><!--end card--> 
+                        </div><!--end col--> 
+                        
+                        <div class="col-lg-4">
+                            <div class="card">   
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Transfer</h4>                      
+                                        </div><!--end col-->
+                                        <div class="col-auto"> 
+                                            <div class="dropdown">
+                                                <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Recent<i class="las la-angle-down ms-1"></i>
+                                                </a>
+                                            </div>          
+                                        </div><!--end col-->
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->                                              
+                                <div id="transfersDiv" class="card-body"> 
+                                    <!--end analytics-dash-activity-->
+                                </div>  <!--end card-body-->                                     
+                            </div><!--end card--> 
+                        </div><!--end col--> 
+                        
+                        
+                        <div class="col-lg-4">
+                            <div class="card">   
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Bills Payment</h4>                      
+                                        </div><!--end col-->
+                                        <div class="col-auto"> 
+                                            <div class="dropdown">
+                                                <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Recent<i class="las la-angle-down ms-1"></i>
+                                                </a>
+                                            </div>          
+                                        </div><!--end col-->
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->                                              
+                                <div id="billsDiv" class="card-body"> 
+                                    <!--end analytics-dash-activity-->
+                                </div>  <!--end card-body-->                                     
+                            </div><!--end card--> 
+                        </div><!--end col--> 
+                       
+                    </div><!--end row-->
+                    
+                    
+                    
+                    <div class="row">                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Recently Onboarded</h4>                      
+                                        </div><!--end col-->                                        
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->
+                                <div class="card-body">
+                                    <div class="table-responsive browser_users">
+                                        <table id="signupTab" class="table mb-0">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th class="border-top-0">Username</th>
+                                                    <th class="border-top-0">State</th>
+                                                    <th class="border-top-0">Type</th>
+                                                    <th class="border-top-0">SN</th>
+                                                </tr><!--end tr-->
+                                            </thead>
+                                            <tbody id="sDets">
+                                                
+                                            </tbody>
+                                        </table> <!--end table-->                                               
+                                    </div><!--end /div-->
+                                </div><!--end card-body--> 
+                            </div><!--end card--> 
+                        </div> <!--end col-->   
+                        
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Recently Failed</h4>                      
+                                        </div><!--end col-->                                        
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->
+                                <div class="card-body">
+                                    <div class="table-responsive browser_users">
+                                        <table id="failedTab" class="table mb-0">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th class="border-top-0">Username</th>
+                                                    <th class="border-top-0">Tid</th>
+                                                    <th class="border-top-0">Amount</th>
+                                                    <th class="border-top-0">Transaction</th>
+                                                    <th class="border-top-0">Response</th>
+                                                </tr><!--end tr-->
+                                            </thead>
+                                            <tbody id="dere">
+                                                <!--end tr-->                           
+                                            </tbody>
+                                        </table> <!--end table-->                                               
+                                    </div><!--end /div--> 
+                                </div><!--end card-body--> 
+                            </div><!--end card--> 
+                        </div> <!--end col-->
+                    </div><!--end row-->
+                    
+
+                </div><!-- container -->
+
+                <footer class="footer text-center text-sm-start">
+                    &copy; <script>
+                        document.write(new Date().getFullYear())
+                    </script> TMS <span class="text-muted d-none d-sm-inline-block float-end"> <i
+                            class="mdi mdi-heart text-danger"></i> by Gbikna</span>
+                </footer><!--end footer-->
+            </div>
+            <!-- end page content -->
+        </div>
+        <!-- end page-wrapper -->
+
+        
+
+
+        <!-- jQuery  -->
+        <script src="/ui/assets/js/jquery.min.js"></script>
+        <script src="/ui/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="/ui/assets/js/metismenu.min.js"></script>
+        <script src="/ui/assets/js/waves.js"></script>
+        <script src="/ui/assets/js/feather.min.js"></script>
+        <script src="/ui/assets/js/simplebar.min.js"></script>
+        <script src="/ui/assets/js/moment.js"></script>
+        <script src="/ui/plugins/daterangepicker/daterangepicker.js"></script>
+
+        <script src="/ui/plugins/apex-charts/apexcharts.min.js"></script>
+        <script src="/ui/plugins/jvectormap/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="/ui/plugins/jvectormap/jquery-jvectormap-us-aea-en.js"></script>
+        <script src="/ui/assets/pages/jquery.analytics_dashboard.init.js"></script>
+
+        <!-- App js -->
+        <script src="/ui/assets/js/app.js"></script>
+
+        <!--<script src="/ui/ajax/dashboard/sweetalert2.all.min.js"></script>
+        <script src="/ui/ajax/dashboard/dashboards.js"></script>-->
+        <script src="/ui/ajax/dashboard/sweetalert2.all.min.js"></script>
+        <script src="/ui/ajax/dashboard/dashboards.js"></script>
+        
+    </body>
+
+</html>

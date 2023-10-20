@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CREDITNG">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/public/applications/pax/s90/CREDITNG.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
